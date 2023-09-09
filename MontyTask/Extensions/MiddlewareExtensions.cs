@@ -12,7 +12,7 @@ public static class MiddlewareExtensions
             {
                 Title = "Monty Task",
                 Version = "v1",
-                Description = "Demo"
+                Description = "Monty Task"
             });
 
             cfg.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -29,7 +29,7 @@ public static class MiddlewareExtensions
                     {
                         Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
                     },
-                    new [] { string.Empty }
+                    new string[]{ }
                 }
             });
         });

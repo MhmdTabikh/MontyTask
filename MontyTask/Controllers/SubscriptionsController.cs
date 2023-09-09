@@ -8,8 +8,8 @@ using MontyTask.Services;
 
 namespace MontyTask.Controllers;
 
-[Authorize]
 [ApiController]
+[Authorize]
 [Route("/api/subscriptions")]
 public class SubscriptionsController : ControllerBase
 {

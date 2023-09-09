@@ -21,9 +21,10 @@ builder.Logging.ClearProviders();
 
 builder.Logging.AddSerilog(logger);
 
-builder.Services.AddControllers();
 
 var app = builder.Build();
+
+app.UseDeveloperExceptionPage();
 
 app.UseRouting();
 
@@ -33,7 +34,10 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 using var scope = app.Services.CreateScope();
 try
