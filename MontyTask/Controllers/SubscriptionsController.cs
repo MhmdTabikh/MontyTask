@@ -62,6 +62,8 @@ public class SubscriptionsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddSubscription([FromBody] AddUserSubscriptionResource addUserSubscriptionResource)
     {
+        //ToDo: Automapper to map from resource to dto,and then from response to resource
+        //Checks
         try
         {
              await _subscriptionService.AddSubscription(addUserSubscriptionResource.UserEmail,
