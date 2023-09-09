@@ -25,6 +25,8 @@ public class SubscriptionRepository : ISubscriptionRepository
 
     public async Task AddSubscription(string email, SubscriptionType subscription, DateTime startDate, DateTime endDate)
     {
+        //ToDo: checks 
+
         var user = await _userRepository.FindByEmailAsync(email);
         if (user is null)
             return;
@@ -46,7 +48,6 @@ public class SubscriptionRepository : ISubscriptionRepository
                 EndDate = endDate
             });
         }
-
     }
 
     public async Task<List<Subscription>?> FindByEmailAsync(string email)
