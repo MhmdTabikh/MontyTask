@@ -11,7 +11,7 @@ public class DataContext : DbContext
 
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
-
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -45,14 +45,23 @@ public class DatabaseSeed
         {
             new Subscription {
                 Id=1,
-                StartDate = DateTime.Today,
-                EndDate = DateTime.Today,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
                 SubscriptionType = SubscriptionType.Standard,
                 User = users[0]
             }
         };
-            context.Users.AddRange(users);
-            await context.SaveChangesAsync();
+            try
+            {
+                context.Users.AddRange(users);
+                context.Subscriptions.AddRange(subscriptions);
+                await context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
     }
 }

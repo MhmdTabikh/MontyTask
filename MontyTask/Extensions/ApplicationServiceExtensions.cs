@@ -16,6 +16,7 @@ public static class ApplicationServiceExtensions
         services.AddDbContext<DataContext>(options =>
         {
             options.UseNpgsql(configuration.GetConnectionString("MontyTaskDB"));
+            
         });
 
 

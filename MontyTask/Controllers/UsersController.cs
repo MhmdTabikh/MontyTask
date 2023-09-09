@@ -37,7 +37,7 @@ public class UsersController : ControllerBase
                 return BadRequest(response.Message);
             }
 
-            var userResource = _mapper.Map<User, UserResource>(response.User);
+            var userResource = _mapper.Map<UserResource>(response.User);
 
             _logger.LogWarning($"User created successfully under username : {userCredentials.Email}");
             return Ok(userResource);

@@ -1,4 +1,8 @@
-﻿namespace MontyTask.Data.Models;
+﻿
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace MontyTask.Data.Models;
 public class Subscription
 {
     public int Id { get; set; }

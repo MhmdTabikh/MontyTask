@@ -13,4 +13,6 @@ public class User
     [Required]
     public string Password { get; set; } = string.Empty;
 
+    //no need to add navigational property for subscriptions
+
 }

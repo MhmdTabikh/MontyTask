@@ -21,15 +21,18 @@ public class SubscriptionService : ISubscriptionService
         _subscriptionRepository = subscriptionRepository;
     }
 
-
     public async Task<SubscriptionResponse> GetSubscriptionsByEmailAsync(string email)
     {
-        var subscriptions =  await _subscriptionRepository.FindByEmailAsync(email);
-        if(subscriptions is null)
+        var subscriptions = await _subscriptionRepository.FindByEmailAsync(email);
+        if (subscriptions is null)
         {
-            return new SubscriptionResponse(true, $"No subscriptions were found for user {email}", Enumerable.Empty<Subscription>());
+            return new SubscriptionResponse(false, $"user with email {email} was not found", null);
+        }
+        if (!subscriptions.Any())
+        {
+            return new SubscriptionResponse(true, null, new List<Subscription>());
         }
 
-        return new SubscriptionResponse(true, null, subscriptions);
+        return new SubscriptionResponse(true, null, subscriptions.ToList());
     }
 }

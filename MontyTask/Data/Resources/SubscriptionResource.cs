@@ -6,6 +6,6 @@ public class SubscriptionResource
 {
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    public SubscriptionType SubscriptionType { get; set; } 
+    public string SubscriptionType { get; set; } = string.Empty;
 
 }

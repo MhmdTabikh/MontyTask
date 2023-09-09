@@ -25,12 +25,6 @@ public class SubscriptionsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetME()
-    {
-        return Ok();
-    }
-
-    [HttpGet]
     [Route("{userEmail}")]
     public async Task<IActionResult> GetSubscriptionsByUserEmail(string userEmail)
     {
@@ -43,7 +37,7 @@ public class SubscriptionsController : ControllerBase
                 return BadRequest(response.Message);
             }
 
-            var subscriptionResource = _mapper.Map<IEnumerable<Subscription>, IEnumerable<SubscriptionResource>>(response.Subscriptions);
+            var subscriptionResource = _mapper.Map<List<Subscription>,List<SubscriptionResource>>(response.Subscriptions);
 
             return Ok(subscriptionResource);
         }
