@@ -4,6 +4,7 @@ using MontyTask.Services;
 
 namespace MontyTask.Data.Models;
 
+//ToDo : whole Data folder to be in another  project MontyTask.Data
 public class DataContext : DbContext
 {
     public DbSet<User> Users { get; set; }
