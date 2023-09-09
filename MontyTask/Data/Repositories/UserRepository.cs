@@ -27,7 +27,7 @@ public class UserRepository : IUserRepository
 
     public async Task<User?> FindByEmailAsync(string email)
     {
-        return await _context.Users.FirstOrDefaultAsync(_ => _.Email.Equals(email));
+        return await _context.Users.FirstOrDefaultAsync(x => x.Email.Equals(email));
     }
 
 }

@@ -9,6 +9,7 @@ namespace MontyTask.Services;
 public interface ISubscriptionService
 {
     Task<SubscriptionResponse> GetSubscriptionsByEmailAsync(string email);
+    Task AddSubscription(string userEmail, SubscriptionType subscriptionType,DateTime startDate,DateTime endDate);
 }
 public class SubscriptionService : ISubscriptionService
 {
@@ -19,6 +20,12 @@ public class SubscriptionService : ISubscriptionService
     {
         _unitOfWork = unitOfWork;
         _subscriptionRepository = subscriptionRepository;
+    }
+
+    public async Task AddSubscription(string userEmail, SubscriptionType subscriptionType,DateTime startDate,DateTime endDate)
+    {
+        await _subscriptionRepository.AddSubscription(userEmail, subscriptionType, startDate, endDate);
+        await _unitOfWork.CompleteAsync();
     }
 
     public async Task<SubscriptionResponse> GetSubscriptionsByEmailAsync(string email)
